@@ -2,6 +2,8 @@
 
 An interactive 3D graph visualizer built with Three.js that animates both A* and Dijkstra's pathfinding algorithms side by side.
 
+![Pathfinder preview](preview.png)
+
 ## Features
 
 - **Randomly generated graphs** — 48 nodes connected by proximity, guaranteed fully connected
