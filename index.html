@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pathfinder — A* &amp; Dijkstra Visualizer</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Three.js r160 via importmap — no build step required -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three":          "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/":  "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Three.js renders here -->
+  <canvas id="canvas"></canvas>
+
+  <!-- ── Header ─────────────────────────────────────── -->
+  <div id="header" class="panel">
+    <h1>Pathfinder</h1>
+    <p>A* &amp; Dijkstra Interactive Visualizer · Three.js</p>
+  </div>
+
+  <!-- ── Left controls ──────────────────────────────── -->
+  <div id="controls" class="panel">
+    <h2>Controls</h2>
+
+    <button id="btn-regenerate">⟳ &nbsp;New Graph</button>
+    <button id="btn-reset">✕ &nbsp;Reset Selection</button>
+
+    <h2 style="margin-top:14px">Legend</h2>
+    <div class="legend">
+      <div class="legend-item">
+        <div class="dot" style="background:#00ff88;color:#00ff88"></div>
+        <span>Start node</span>
+      </div>
+      <div class="legend-item">
+        <div class="dot" style="background:#ff3355;color:#ff3355"></div>
+        <span>End node</span>
+      </div>
+      <div class="legend-item">
+        <div class="dot" style="background:#ff8800;color:#ff8800"></div>
+        <span>Dijkstra explored</span>
+      </div>
+      <div class="legend-item">
+        <div class="dot" style="background:#aa44ff;color:#aa44ff"></div>
+        <span>A* explored</span>
+      </div>
+      <div class="legend-item">
+        <div class="dot" style="background:#ffcc00;color:#ffcc00"></div>
+        <span>Dijkstra path</span>
+      </div>
+      <div class="legend-item">
+        <div class="dot" style="background:#00eeff;color:#00eeff"></div>
+        <span>A* path</span>
+      </div>
+    </div>
+
+    <div style="margin-top:14px; font-size:0.72rem; opacity:0.4; line-height:1.6;">
+      🖱 Drag to orbit<br>
+      📌 Click node = Start<br>
+      📌 Click again = End
+    </div>
+  </div>
+
+  <!-- ── Right stats ────────────────────────────────── -->
+  <div id="stats" class="panel">
+    <h2>Statistics</h2>
+
+    <div class="stats-grid">
+      <!-- header row -->
+      <div></div>
+      <div class="col-head" style="color:#ffcc00">Dijkstra</div>
+      <div class="col-head" style="color:#00eeff">A*</div>
+
+      <div class="row-label">Nodes explored</div>
+      <div class="val val-d" id="stat-d-nodes">—</div>
+      <div class="val val-a" id="stat-a-nodes">—</div>
+
+      <div class="row-label">Path hops</div>
+      <div class="val val-d" id="stat-d-path">—</div>
+      <div class="val val-a" id="stat-a-path">—</div>
+
+      <div class="row-label">Distance</div>
+      <div class="val val-d" id="stat-d-dist">—</div>
+      <div class="val val-a" id="stat-a-dist">—</div>
+
+      <div class="stat-divider"></div>
+
+      <div class="efficiency-row">
+        <span>A* efficiency vs Dijkstra</span>
+        <span id="stat-efficiency">—</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Bottom instruction ─────────────────────────── -->
+  <div id="instruction-bar" class="panel">
+    <span id="instruction">
+      Click any node to set the <span style="color:#00ff88">Start</span>
+    </span>
+  </div>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
